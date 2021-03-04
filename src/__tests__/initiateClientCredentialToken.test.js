@@ -1,7 +1,6 @@
 let fetch = require('node-fetch');
 import config from '../config';
-import makeRequest from '../middleware/makeRequest'
-import { newReleased } from '../model/albums';
+import { newReleased } from './modelAlbums.test';
 
 let initiateClientCredentials = () => {
   let auth = `${config.api.clientId}:${config.api.clientSecret}`;
@@ -45,9 +44,7 @@ it('call for initial auth token', () => {
   return initiateClientCredentials().then(data => {
     APP_SPOTIFY = data;
     window.APP_SPOTIFY = data;
-    console.log(data);
     expect(data).toBeTruthy();
     expect(data).toHaveProperty('access_token');
   });
 });
-
